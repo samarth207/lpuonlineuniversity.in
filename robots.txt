@@ -1,0 +1,15 @@
+# robots.txt for lpuonlineuniversity.in
+User-agent: *
+Allow: /
+
+# Disallow backend/admin files
+Disallow: /db_config.php
+Disallow: /setup_db.php
+Disallow: /submit_form.php
+Disallow: /del.html
+
+# Sitemap
+Sitemap: https://lpuonlineuniversity.in/sitemap.xml
+
+# Crawl delay (optional - be gentle on server)
+Crawl-delay: 5

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://lpuonlineuniversity.in/</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lpuonlineuniversity.in/images/LPU-Online-Logo.svg</image:loc>
+      <image:title>LPU Online University Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lpuonlineuniversity.in/images/slider/admission-open-jan-26.webp</image:loc>
+      <image:title>LPU Online Admissions Open January 2026</image:title>
+    </image:image>
+  </url>
+
+  <!-- Jai Jawan Scholarship -->
+  <url>
+    <loc>https://lpuonlineuniversity.in/jai-jawan-scholarship.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://lpuonlineuniversity.in/images/jai-jawan-scholarship-v3.webp</image:loc>
+      <image:title>Jai Jawan Scholarship - 100% Tuition Fee Waiver for Armed Forces</image:title>
+    </image:image>
+  </url>
+
+  <!-- Program Pages (when created) -->
+  <url>
+    <loc>https://lpuonlineuniversity.in/online-mba.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lpuonlineuniversity.in/online-mca.html</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
