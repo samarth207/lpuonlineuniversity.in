@@ -2024,7 +2024,7 @@ button {
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
   position: fixed;
-  bottom: 25px;
+  bottom: 90px;
   right: 25px;
   width: 55px;
   height: 55px;
@@ -2041,6 +2041,28 @@ button {
 .whatsapp-float:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* ===== PHONE FLOAT ===== */
+.phone-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  background: #1e73be;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(30, 115, 190, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.phone-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(30, 115, 190, 0.5);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -2369,13 +2391,25 @@ button {
   }
 
   .whatsapp-float {
-    bottom: 18px;
+    bottom: 76px;
     right: 18px;
     width: 48px;
     height: 48px;
   }
 
   .whatsapp-float svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .phone-float {
+    bottom: 18px;
+    right: 18px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .phone-float svg {
     width: 24px;
     height: 24px;
   }

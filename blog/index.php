@@ -140,7 +140,7 @@ if ($categorySlug) $canonicalUrl .= '?category=' . urlencode($categorySlug);
                 </ul>
             </nav>
             <div class="header__actions">
-                <a href="tel:01824520001" class="btn-phone" aria-label="Call"><i class="las la-phone"></i> 93113 81814</a>
+                <a href="tel:9311381814" class="btn-phone" aria-label="Call"><i class="las la-phone"></i> 93113 81814</a>
             </div>
         </div>
     </header>
@@ -285,7 +285,7 @@ if ($categorySlug) $canonicalUrl .= '?category=' . urlencode($categorySlug);
                     </div>
                     <div class="footer__contact-item">
                         <i class="la la-phone"></i>
-                        <div><strong>Admissions:</strong><p><a href="tel:01824520001">93113 81814</a></p></div>
+                        <div><strong>Admissions:</strong><p><a href="tel:9311381814">93113 81814</a></p></div>
                     </div>
                 </div>
             </div>

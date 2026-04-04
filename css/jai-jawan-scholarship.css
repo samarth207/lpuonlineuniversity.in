@@ -653,10 +653,28 @@ ul, ol { list-style: none; }
   width: 100%; height: 100%;
 }
 
+/* ========== PHONE FLOAT ========== */
+.phone-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: #1e73be;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(30,115,190,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.phone-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(30,115,190,0.5); }
+
 /* ========== WHATSAPP FLOAT ========== */
 .whatsapp-float {
   position: fixed;
-  bottom: 20px;
+  bottom: 86px;
   right: 20px;
   z-index: 999;
   background: #25d366;
@@ -675,7 +693,7 @@ ul, ol { list-style: none; }
 /* ========== ENQUIRE FLOATING BUTTON ========== */
 .jw-enquire-float {
   position: fixed;
-  bottom: 85px;
+  bottom: 153px;
   right: 20px;
   z-index: 999;
   background: linear-gradient(135deg, #e8740c, #f5a623);
@@ -759,8 +777,9 @@ ul, ol { list-style: none; }
   .jw-feature__icon { width: 32px; }
 
   .jw-cta__text { font-size: 15px; }
-  .jw-enquire-float { bottom: 75px; right: 14px; padding: 10px 18px; font-size: 13px; }
-  .whatsapp-float { bottom: 14px; right: 14px; width: 48px; height: 48px; }
+  .jw-enquire-float { bottom: 134px; right: 14px; padding: 10px 18px; font-size: 13px; }
+  .whatsapp-float { bottom: 72px; right: 14px; width: 48px; height: 48px; }
+  .phone-float { bottom: 14px; right: 14px; width: 48px; height: 48px; }
 }
 
 /* ========== FAQ SECTION ========== */
