@@ -318,8 +318,10 @@ tinymce.init({
     plugins: 'lists link image table code fullscreen wordcount autolink autoresize searchreplace visualblocks',
     toolbar: [
         'undo redo | blocks | bold italic underline strikethrough | forecolor backcolor',
-        'alignleft aligncenter alignright | bullist numlist | link image table | faqblock | code fullscreen'
+        'alignleft aligncenter alignright | bullist numlist | link image table | faqblock addfaqitem | code fullscreen'
     ],
+    toolbar_sticky: true,
+    toolbar_sticky_offset: 56,
     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
     image_title: true,
     image_caption: true,
@@ -360,19 +362,73 @@ tinymce.init({
         'img { max-width: 100%; height: auto; border-radius: 8px; }' +
         'table { border-collapse: collapse; width: 100%; } table td, table th { border: 1px solid #dee2e6; padding: 8px 12px; }',
     setup: function(editor) {
-        // Custom FAQ Block Button
+        // Helper: find the existing FAQ section in the editor content
+        function findFaqSection() {
+            return editor.dom.select('div.faq-section')[0] || null;
+        }
+
+        // Helper: count existing FAQ items
+        function countFaqItems() {
+            var section = findFaqSection();
+            if (!section) return 0;
+            return editor.dom.select('div.faq-item', section).length;
+        }
+
+        // Helper: create a single FAQ item HTML
+        function createFaqItemHtml(num) {
+            return '<div class="faq-item"><h3>Question ' + num + '?</h3><p>Answer ' + num + '.</p></div>';
+        }
+
+        // Insert FAQ Section button — creates new section or adds item to existing one
         editor.ui.registry.addButton('faqblock', {
             text: 'FAQ',
-            tooltip: 'Insert FAQ Section',
+            tooltip: 'Insert FAQ Section (or add item to existing)',
             onAction: function() {
-                editor.insertContent(
-                    '<div class="faq-section">' +
-                    '<h2>Frequently Asked Questions</h2>' +
-                    '<div class="faq-item"><h3>Question 1?</h3><p>Answer 1.</p></div>' +
-                    '<div class="faq-item"><h3>Question 2?</h3><p>Answer 2.</p></div>' +
-                    '<div class="faq-item"><h3>Question 3?</h3><p>Answer 3.</p></div>' +
-                    '</div>'
-                );
+                var existingSection = findFaqSection();
+                if (existingSection) {
+                    // Add a new FAQ item to the existing section
+                    var currentCount = countFaqItems();
+                    var newNum = currentCount + 1;
+                    var newItem = editor.dom.createFragment(createFaqItemHtml(newNum));
+                    existingSection.appendChild(newItem);
+                    editor.undoManager.add();
+                    editor.nodeChanged();
+                } else {
+                    // No FAQ section exists — create one with 3 items
+                    editor.insertContent(
+                        '<div class="faq-section">' +
+                        '<h2>Frequently Asked Questions</h2>' +
+                        '<div class="faq-item"><h3>Question 1?</h3><p>Answer 1.</p></div>' +
+                        '<div class="faq-item"><h3>Question 2?</h3><p>Answer 2.</p></div>' +
+                        '<div class="faq-item"><h3>Question 3?</h3><p>Answer 3.</p></div>' +
+                        '</div>'
+                    );
+                }
+            }
+        });
+
+        // Add FAQ Item button — always appends to the existing FAQ section
+        editor.ui.registry.addButton('addfaqitem', {
+            text: '+ FAQ Item',
+            tooltip: 'Add another FAQ item to the existing section',
+            onAction: function() {
+                var existingSection = findFaqSection();
+                if (existingSection) {
+                    var currentCount = countFaqItems();
+                    var newNum = currentCount + 1;
+                    var newItem = editor.dom.createFragment(createFaqItemHtml(newNum));
+                    existingSection.appendChild(newItem);
+                    editor.undoManager.add();
+                    editor.nodeChanged();
+                } else {
+                    // No section yet — create one with a single item
+                    editor.insertContent(
+                        '<div class="faq-section">' +
+                        '<h2>Frequently Asked Questions</h2>' +
+                        '<div class="faq-item"><h3>Question 1?</h3><p>Answer 1.</p></div>' +
+                        '</div>'
+                    );
+                }
             }
         });
     }
