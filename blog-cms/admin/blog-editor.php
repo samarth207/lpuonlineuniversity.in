@@ -329,7 +329,7 @@ tinymce.init({
     noneditable_class: 'blog-lead-form',
     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
     // Advanced table controls
-    table_toolbar: 'tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tablecellprops tablerowprops',
+    table_toolbar: 'tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tablecellprops tablerowprops | cellbgcolor cellbold',
     table_advtab: true,
     table_cell_advtab: true,
     table_row_advtab: true,
@@ -381,7 +381,8 @@ tinymce.init({
         '.blog-lead-form .lead-form-free { color: #4ade80; font-size: 14px; font-weight: 600; margin-bottom: 20px; } ' +
         '.blog-lead-form .lead-form-fields { display: flex; gap: 10px; max-width: 600px; margin: 0 auto; } ' +
         '.blog-lead-form input { flex: 1; padding: 10px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; } ' +
-        '.blog-lead-form button { background: #f58220; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; }',
+        '.blog-lead-form button { background: #f58220; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; }',
+
     setup: function(editor) {
         // Helper: find the existing FAQ section in the editor content
         function findFaqSection() {
@@ -467,6 +468,86 @@ tinymce.init({
                     '<p class="lead-form-placeholder">[Lead Form — Name, Phone, Course fields will appear here on the live blog]</p>' +
                     '</div><p>&nbsp;</p>'
                 );
+            }
+        });
+
+        // Helper: get all selected table cells
+        function getSelectedCells() {
+            var cells = [];
+            // Try to get cells from the current selection range
+            var selectedCells = editor.dom.select('td.mce-cell-selected, th.mce-cell-selected');
+            if (selectedCells.length > 0) return selectedCells;
+
+            // Fallback: get the cell the cursor is in
+            var node = editor.selection.getNode();
+            var cell = editor.dom.getParent(node, 'td,th');
+            if (cell) cells.push(cell);
+            return cells;
+        }
+
+        // Cell Background Color button
+        editor.ui.registry.addButton('cellbgcolor', {
+            icon: 'fill',
+            tooltip: 'Cell Fill Color',
+            onAction: function() {
+                editor.windowManager.open({
+                    title: 'Cell Background Color',
+                    body: {
+                        type: 'panel',
+                        items: [
+                            {
+                                type: 'colorinput',
+                                name: 'cellcolor',
+                                label: 'Pick a color'
+                            }
+                        ]
+                    },
+                    buttons: [
+                        { type: 'cancel', text: 'Cancel' },
+                        { type: 'submit', text: 'Apply', primary: true }
+                    ],
+                    initialData: { cellcolor: '#f8fafc' },
+                    onSubmit: function(dialog) {
+                        var data = dialog.getData();
+                        var color = data.cellcolor;
+                        var cells = getSelectedCells();
+                        if (cells.length === 0) {
+                            // If no cell selected, find the current row and color all its cells
+                            var node = editor.selection.getNode();
+                            var row = editor.dom.getParent(node, 'tr');
+                            if (row) cells = editor.dom.select('td,th', row);
+                        }
+                        cells.forEach(function(cell) {
+                            editor.dom.setStyle(cell, 'background-color', color);
+                        });
+                        editor.undoManager.add();
+                        dialog.close();
+                    }
+                });
+            }
+        });
+
+        // Cell Bold button
+        editor.ui.registry.addButton('cellbold', {
+            icon: 'bold',
+            tooltip: 'Bold Cell Content',
+            onAction: function() {
+                var cells = getSelectedCells();
+                if (cells.length === 0) {
+                    var node = editor.selection.getNode();
+                    var row = editor.dom.getParent(node, 'tr');
+                    if (row) cells = editor.dom.select('td,th', row);
+                }
+                cells.forEach(function(cell) {
+                    // Check if already bold
+                    var isBold = cell.style.fontWeight === 'bold' || cell.style.fontWeight === '700';
+                    if (isBold) {
+                        editor.dom.setStyle(cell, 'font-weight', 'normal');
+                    } else {
+                        editor.dom.setStyle(cell, 'font-weight', 'bold');
+                    }
+                });
+                editor.undoManager.add();
             }
         });
     }
