@@ -68,6 +68,27 @@ if ($hasFAQ) {
         $faqItems[] = ['question' => strip_tags($faq[1]), 'answer' => strip_tags($faq[2])];
     }
 }
+
+// Replace lead form markers with actual inline-styled form HTML
+$leadFormHtml = '
+<div style="background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:#fff;padding:36px 32px;border-radius:14px;margin:36px 0;text-align:center;position:relative;overflow:hidden;font-family:Inter,sans-serif;">
+  <h3 style="color:#fff;margin:0 0 4px;font-size:22px;font-weight:700;">Still Confused? Get Free Expert Guidance</h3>
+  <p style="color:#4ade80;font-size:14px;font-weight:600;margin:0 0 22px;">✅ 100% Free</p>
+  <form class="blog-lead-form-live" style="display:flex;gap:10px;max-width:640px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+    <input type="text" name="name" placeholder="Your Name" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+    <input type="tel" name="phone" placeholder="Phone Number" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+    <input type="text" name="course" placeholder="Course" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+    <button type="submit" style="background:#f58220;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;">Get Guidance</button>
+  </form>
+  <p class="lead-form-msg" style="margin-top:14px;font-size:14px;font-weight:600;display:none;"></p>
+</div>';
+
+// Replace any blog-lead-form div (however TinyMCE saved it) with the real form
+$post['content'] = preg_replace(
+    '/<div[^>]*class="[^"]*blog-lead-form[^"]*"[^>]*>.*?<\/div>/si',
+    $leadFormHtml,
+    $post['content']
+);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -457,29 +478,12 @@ if ($hasFAQ) {
         });
     }
 
-    // Activate in-blog lead forms
-    document.querySelectorAll('.blog-lead-form').forEach(function(formBlock) {
-        // Remove the editor placeholder text if present
-        var placeholder = formBlock.querySelector('.lead-form-placeholder');
-        if (placeholder) placeholder.remove();
-
-        // Remove any existing lead-form-fields div (leftover from editor)
-        var existingFields = formBlock.querySelector('.lead-form-fields');
-        if (existingFields) existingFields.remove();
-
-        // Build the complete form from scratch
-        var form = document.createElement('form');
-        form.className = 'lead-form-fields';
-        form.innerHTML =
-            '<input type="text" name="name" placeholder="Your Name" required>' +
-            '<input type="tel" name="phone" placeholder="Phone Number" required>' +
-            '<input type="text" name="course" placeholder="Course" required>' +
-            '<button type="submit">Get Guidance</button>';
-        formBlock.appendChild(form);
-
+    // AJAX submission for inline lead forms
+    document.querySelectorAll('.blog-lead-form-live').forEach(function(form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             var btn = form.querySelector('button');
+            var msgEl = form.parentElement.querySelector('.lead-form-msg');
             var nameVal = form.querySelector('input[name="name"]').value.trim();
             var phoneVal = form.querySelector('input[name="phone"]').value.trim();
             var courseVal = form.querySelector('input[name="course"]').value.trim();
@@ -488,10 +492,7 @@ if ($hasFAQ) {
 
             btn.disabled = true;
             btn.textContent = 'Submitting...';
-
-            // Remove old message
-            var oldMsg = formBlock.querySelector('.lead-form-msg');
-            if (oldMsg) oldMsg.remove();
+            if (msgEl) { msgEl.style.display = 'none'; }
 
             var fd = new FormData();
             fd.append('form_type', 'blog_lead');
@@ -507,25 +508,26 @@ if ($hasFAQ) {
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
-                var msg = document.createElement('p');
-                msg.className = 'lead-form-msg';
-                if (data.success) {
-                    msg.classList.add('success');
-                    msg.textContent = '\u2705 Thank you! Our expert will contact you shortly.';
-                    form.reset();
-                } else {
-                    msg.classList.add('error');
-                    msg.textContent = '\u274c ' + (data.message || 'Something went wrong. Please try again.');
+                if (msgEl) {
+                    msgEl.style.display = 'block';
+                    if (data.success) {
+                        msgEl.style.color = '#4ade80';
+                        msgEl.textContent = '\u2705 Thank you! Our expert will contact you shortly.';
+                        form.reset();
+                    } else {
+                        msgEl.style.color = '#f87171';
+                        msgEl.textContent = '\u274c ' + (data.message || 'Something went wrong.');
+                    }
                 }
-                formBlock.appendChild(msg);
                 btn.disabled = false;
                 btn.textContent = 'Get Guidance';
             })
             .catch(function() {
-                var msg = document.createElement('p');
-                msg.className = 'lead-form-msg error';
-                msg.textContent = '\u274c Network error. Please try again.';
-                formBlock.appendChild(msg);
+                if (msgEl) {
+                    msgEl.style.display = 'block';
+                    msgEl.style.color = '#f87171';
+                    msgEl.textContent = '\u274c Network error. Please try again.';
+                }
                 btn.disabled = false;
                 btn.textContent = 'Get Guidance';
             });

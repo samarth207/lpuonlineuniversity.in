@@ -328,6 +328,16 @@ tinymce.init({
     valid_children: '+body[div],+div[div|h3|p|span]',
     noneditable_class: 'blog-lead-form',
     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
+    // Advanced table controls
+    table_toolbar: 'tableprops tabledelete | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol | tablecellprops tablerowprops',
+    table_advtab: true,
+    table_cell_advtab: true,
+    table_row_advtab: true,
+    table_appearance_options: true,
+    table_default_styles: {
+        'border-collapse': 'collapse',
+        'width': '100%'
+    },
     image_title: true,
     image_caption: true,
     image_advtab: true,
