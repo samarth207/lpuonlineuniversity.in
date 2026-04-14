@@ -225,8 +225,23 @@
             <div class="jw-hero__form-group">
               <input type="email" name="email" placeholder="Email Address *" required>
             </div>
-            <div class="jw-hero__form-group">
-              <input type="tel" name="phone" placeholder="Phone Number *" required>
+            <div class="jw-hero__form-group" style="display:flex;gap:0;">
+              <select name="country_code" style="width:90px;padding:10px 6px;border:1px solid #ddd;border-right:none;border-radius:8px 0 0 8px;background:#f9f9f9;font-size:14px;color:#333;">
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+977">🇳🇵 +977</option>
+                <option value="+880">🇧🇩 +880</option>
+                <option value="+94">🇱🇰 +94</option>
+                <option value="+60">🇲🇾 +60</option>
+              </select>
+              <input type="tel" name="phone" placeholder="Phone Number *" required style="flex:1;border-radius:0 8px 8px 0;">
             </div>
             <div class="jw-hero__form-group">
               <select name="program" required>
@@ -659,7 +674,24 @@
           </div>
           <div class="popup-form__group">
             <label class="popup-form__label">Phone Number</label>
-            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            <div class="phone-input-group">
+              <select name="country_code" class="country-code-select">
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+977">🇳🇵 +977</option>
+                <option value="+880">🇧🇩 +880</option>
+                <option value="+94">🇱🇰 +94</option>
+                <option value="+60">🇲🇾 +60</option>
+              </select>
+              <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            </div>
           </div>
           <div class="popup-form__group">
             <label class="popup-form__label">Program of Interest</label>
@@ -735,7 +767,24 @@
           </div>
           <div class="popup-form__group">
             <label class="popup-form__label">Phone Number</label>
-            <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            <div class="phone-input-group">
+              <select name="country_code" class="country-code-select">
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+977">🇳🇵 +977</option>
+                <option value="+880">🇧🇩 +880</option>
+                <option value="+94">🇱🇰 +94</option>
+                <option value="+60">🇲🇾 +60</option>
+              </select>
+              <input type="tel" name="phone" placeholder="Enter your phone number" required>
+            </div>
           </div>
           <div class="popup-form__group">
             <label class="popup-form__label">Highest Qualification</label>
@@ -953,6 +1002,9 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="la la-spinner la-spin"></i> Submitting...';
         var formData = new FormData(form);
+        var cc = formData.get('country_code') || '+91';
+        formData.set('phone', cc + ' ' + formData.get('phone'));
+        formData.delete('country_code');
         formData.append('form_type', 'enquire');
         formData.append('page_source', 'jai-jawan-scholarship.html');
         fetch('submit_form.php', { method: 'POST', body: formData })
@@ -975,6 +1027,9 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="la la-spinner la-spin"></i> Submitting...';
         var formData = new FormData(form);
+        var cc = formData.get('country_code') || '+91';
+        formData.set('phone', cc + ' ' + formData.get('phone'));
+        formData.delete('country_code');
         formData.append('form_type', 'apply');
         formData.append('page_source', 'jai-jawan-scholarship.html');
         fetch('submit_form.php', { method: 'POST', body: formData })
@@ -998,6 +1053,9 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="la la-spinner la-spin"></i> Submitting...';
       var formData = new FormData(form);
+      var cc = formData.get('country_code') || '+91';
+      formData.set('phone', cc + ' ' + formData.get('phone'));
+      formData.delete('country_code');
       formData.append('form_type', 'scholarship_apply');
       formData.append('page_source', 'jai-jawan-scholarship.html');
       fetch('submit_form.php', { method: 'POST', body: formData })

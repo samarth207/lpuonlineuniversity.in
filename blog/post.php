@@ -76,7 +76,20 @@ $leadFormHtml = '
   <p style="color:#4ade80;font-size:14px;font-weight:600;margin:0 0 22px;">✅ 100% Free</p>
   <form class="blog-lead-form-live" style="display:flex;gap:10px;max-width:640px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
     <input type="text" name="name" placeholder="Your Name" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
-    <input type="tel" name="phone" placeholder="Phone Number" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+    <div style="display:flex;flex:1;min-width:180px;gap:0;">
+      <select name="country_code" style="width:80px;padding:12px 4px;border:1px solid rgba(255,255,255,.18);border-right:none;border-radius:8px 0 0 8px;background:rgba(255,255,255,.08);color:#fff;font-size:13px;font-family:inherit;outline:none;">
+        <option value="+91" selected>🇮🇳 +91</option>
+        <option value="+1">🇺🇸 +1</option>
+        <option value="+44">🇬🇧 +44</option>
+        <option value="+971">🇦🇪 +971</option>
+        <option value="+977">🇳🇵 +977</option>
+        <option value="+880">🇧🇩 +880</option>
+        <option value="+94">🇱🇰 +94</option>
+        <option value="+65">🇸🇬 +65</option>
+        <option value="+61">🇦🇺 +61</option>
+      </select>
+      <input type="tel" name="phone" placeholder="Phone Number" required style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:0 8px 8px 0;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+    </div>
     <input type="text" name="course" placeholder="Course" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
     <button type="submit" style="background:#f58220;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;">Get Guidance</button>
   </form>
@@ -494,11 +507,14 @@ $post['content'] = preg_replace(
             btn.textContent = 'Submitting...';
             if (msgEl) { msgEl.style.display = 'none'; }
 
+            var ccSelect = form.querySelector('select[name="country_code"]');
+            var ccVal = ccSelect ? ccSelect.value : '+91';
+
             var fd = new FormData();
             fd.append('form_type', 'blog_lead');
             fd.append('name', nameVal);
             fd.append('email', nameVal.toLowerCase().replace(/\s+/g, '') + '@blog-lead.local');
-            fd.append('phone', phoneVal);
+            fd.append('phone', ccVal + ' ' + phoneVal);
             fd.append('program', courseVal);
             fd.append('page_source', 'blog: <?= e($post['slug']) ?>');
 
