@@ -456,6 +456,81 @@ if ($hasFAQ) {
             if (active) active.link.classList.add('active');
         });
     }
+
+    // Activate in-blog lead forms
+    document.querySelectorAll('.blog-lead-form').forEach(function(formBlock) {
+        // Remove the editor placeholder text if present
+        var placeholder = formBlock.querySelector('.lead-form-placeholder');
+        if (placeholder) placeholder.remove();
+
+        // Remove any existing lead-form-fields div (leftover from editor)
+        var existingFields = formBlock.querySelector('.lead-form-fields');
+        if (existingFields) existingFields.remove();
+
+        // Build the complete form from scratch
+        var form = document.createElement('form');
+        form.className = 'lead-form-fields';
+        form.innerHTML =
+            '<input type="text" name="name" placeholder="Your Name" required>' +
+            '<input type="tel" name="phone" placeholder="Phone Number" required>' +
+            '<input type="text" name="course" placeholder="Course" required>' +
+            '<button type="submit">Get Guidance</button>';
+        formBlock.appendChild(form);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = form.querySelector('button');
+            var nameVal = form.querySelector('input[name="name"]').value.trim();
+            var phoneVal = form.querySelector('input[name="phone"]').value.trim();
+            var courseVal = form.querySelector('input[name="course"]').value.trim();
+
+            if (!nameVal || !phoneVal || !courseVal) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            // Remove old message
+            var oldMsg = formBlock.querySelector('.lead-form-msg');
+            if (oldMsg) oldMsg.remove();
+
+            var fd = new FormData();
+            fd.append('form_type', 'blog_lead');
+            fd.append('name', nameVal);
+            fd.append('email', nameVal.toLowerCase().replace(/\s+/g, '') + '@blog-lead.local');
+            fd.append('phone', phoneVal);
+            fd.append('program', courseVal);
+            fd.append('page_source', 'blog: <?= e($post['slug']) ?>');
+
+            fetch('/submit_form.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                var msg = document.createElement('p');
+                msg.className = 'lead-form-msg';
+                if (data.success) {
+                    msg.classList.add('success');
+                    msg.textContent = '\u2705 Thank you! Our expert will contact you shortly.';
+                    form.reset();
+                } else {
+                    msg.classList.add('error');
+                    msg.textContent = '\u274c ' + (data.message || 'Something went wrong. Please try again.');
+                }
+                formBlock.appendChild(msg);
+                btn.disabled = false;
+                btn.textContent = 'Get Guidance';
+            })
+            .catch(function() {
+                var msg = document.createElement('p');
+                msg.className = 'lead-form-msg error';
+                msg.textContent = '\u274c Network error. Please try again.';
+                formBlock.appendChild(msg);
+                btn.disabled = false;
+                btn.textContent = 'Get Guidance';
+            });
+        });
+    });
     </script>
 
 </body>

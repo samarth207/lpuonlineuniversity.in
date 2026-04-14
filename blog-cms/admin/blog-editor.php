@@ -315,13 +315,18 @@ tinymce.init({
     selector: '#blog_content',
     height: 600,
     menubar: 'file edit view insert format table',
-    plugins: 'lists link image table code fullscreen wordcount autolink autoresize searchreplace visualblocks',
+    plugins: 'lists link image table code fullscreen wordcount autolink autoresize searchreplace visualblocks noneditable',
     toolbar: [
         'undo redo | blocks | bold italic underline strikethrough | forecolor backcolor',
-        'alignleft aligncenter alignright | bullist numlist | link image table | faqblock addfaqitem | code fullscreen'
+        'alignleft aligncenter alignright | bullist numlist | link image table | faqblock addfaqitem | leadform | code fullscreen'
     ],
     toolbar_sticky: true,
     toolbar_sticky_offset: 56,
+    verify_html: false,
+    valid_elements: '*[*]',
+    extended_valid_elements: 'div[class|contenteditable|data-*|style]',
+    valid_children: '+body[div],+div[div|h3|p|span]',
+    noneditable_class: 'blog-lead-form',
     block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
     image_title: true,
     image_caption: true,
@@ -360,7 +365,13 @@ tinymce.init({
         '.faq-item { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #dee2e6; } ' +
         '.faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; } ' +
         'img { max-width: 100%; height: auto; border-radius: 8px; }' +
-        'table { border-collapse: collapse; width: 100%; } table td, table th { border: 1px solid #dee2e6; padding: 8px 12px; }',
+        'table { border-collapse: collapse; width: 100%; } table td, table th { border: 1px solid #dee2e6; padding: 8px 12px; }' +
+        '.blog-lead-form { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: #fff; padding: 32px; border-radius: 12px; margin: 32px 0; text-align: center; } ' +
+        '.blog-lead-form h3 { color: #fff; margin: 0 0 4px; font-size: 22px; } ' +
+        '.blog-lead-form .lead-form-free { color: #4ade80; font-size: 14px; font-weight: 600; margin-bottom: 20px; } ' +
+        '.blog-lead-form .lead-form-fields { display: flex; gap: 10px; max-width: 600px; margin: 0 auto; } ' +
+        '.blog-lead-form input { flex: 1; padding: 10px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; } ' +
+        '.blog-lead-form button { background: #f58220; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; }',
     setup: function(editor) {
         // Helper: find the existing FAQ section in the editor content
         function findFaqSection() {
@@ -429,6 +440,23 @@ tinymce.init({
                         '</div>'
                     );
                 }
+            }
+        });
+
+        // Lead Form button — inserts inline lead capture form
+        // Only stores a simple marker div (no inputs/buttons which TinyMCE strips)
+        // The frontend JS in post.php builds the actual form from this marker
+        editor.ui.registry.addButton('leadform', {
+            text: 'Lead Form',
+            tooltip: 'Insert inline lead capture form',
+            onAction: function() {
+                editor.insertContent(
+                    '<div class="blog-lead-form">' +
+                    '<h3>Still Confused? Get Free Expert Guidance</h3>' +
+                    '<p class="lead-form-free">\u2705 100% Free</p>' +
+                    '<p class="lead-form-placeholder">[Lead Form — Name, Phone, Course fields will appear here on the live blog]</p>' +
+                    '</div><p>&nbsp;</p>'
+                );
             }
         });
     }

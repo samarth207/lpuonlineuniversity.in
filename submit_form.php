@@ -39,7 +39,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Validate form_type
-$allowed_types = ['enquire', 'apply', 'hero_apply', 'scholarship_apply'];
+$allowed_types = ['enquire', 'apply', 'hero_apply', 'scholarship_apply', 'blog_lead'];
 if (!in_array($form_type, $allowed_types)) {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Invalid form type.']);

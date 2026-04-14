@@ -656,6 +656,141 @@
     color: #475569;
 }
 
+/* In-Blog Lead Form */
+.post-content .blog-lead-form {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #fff;
+    padding: 36px 32px;
+    border-radius: 14px;
+    margin: 36px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-content .blog-lead-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245,130,32,.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.post-content .blog-lead-form h3 {
+    color: #fff;
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+}
+
+.post-content .blog-lead-form .lead-form-free {
+    color: #4ade80;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 22px;
+    position: relative;
+}
+
+.post-content .blog-lead-form .lead-form-fields {
+    display: flex;
+    gap: 10px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.post-content .blog-lead-form .lead-form-fields input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 8px;
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s, background .2s;
+    margin: 0;
+}
+
+.post-content .blog-lead-form .lead-form-fields input::placeholder {
+    color: rgba(255,255,255,.5);
+}
+
+.post-content .blog-lead-form .lead-form-fields input:focus {
+    border-color: #f58220;
+    background: rgba(255,255,255,.12);
+}
+
+.post-content .blog-lead-form .lead-form-fields button {
+    background: #f58220;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s, transform .15s;
+}
+
+.post-content .blog-lead-form .lead-form-fields button:hover {
+    background: #e0741a;
+    transform: translateY(-1px);
+}
+
+.post-content .blog-lead-form .lead-form-fields button:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.post-content .blog-lead-form .lead-form-msg {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    animation: fadeInUp .3s ease;
+}
+
+.post-content .blog-lead-form .lead-form-msg.success {
+    color: #4ade80;
+}
+
+.post-content .blog-lead-form .lead-form-msg.error {
+    color: #f87171;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 575.98px) {
+    .post-content .blog-lead-form {
+        padding: 28px 20px;
+    }
+
+    .post-content .blog-lead-form h3 {
+        font-size: 19px;
+    }
+
+    .post-content .blog-lead-form .lead-form-fields {
+        flex-direction: column;
+    }
+
+    .post-content .blog-lead-form .lead-form-fields input,
+    .post-content .blog-lead-form .lead-form-fields button {
+        width: 100%;
+    }
+}
+
 /* Tags */
 .post-tags {
     display: flex;
