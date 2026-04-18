@@ -1,0 +1,1574 @@
+/* =============================================
+   LPU Online University - MBA Course Page Styles
+   File: css/mba-course.css
+   ============================================= */
+
+/* ===== PROGRAM HERO ===== */
+.program-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  color: #fff;
+  padding: 50px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.program-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: url('https://assets.lpuonline.com/images/home-img.png') right center/contain no-repeat;
+  opacity: 0.08;
+}
+
+.program-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.program-hero__admission-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,130,32,0.2);
+  border: 1px solid rgba(245,130,32,0.5);
+  color: #f58220;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.program-hero__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.program-hero__subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.program-hero__fee-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.program-hero__fee-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.program-hero__fee-amount {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f58220;
+}
+
+.program-hero__fee-per {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+.program-hero__emi-badge {
+  background: #22c55e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.program-hero__accreditations {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.06);
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.program-hero__accreditations img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.program-hero__buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-brochure {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-brochure:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+.btn-apply-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f58220;
+  border: 2px solid #f58220;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-apply-hero:hover {
+  background: #e0710f;
+  border-color: #e0710f;
+}
+
+/* Specializations Dropdown */
+.program-hero__specs-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.program-hero__specs-toggle:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.program-hero__specs-dropdown {
+  display: none;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+}
+
+.program-hero__specs-dropdown.show {
+  display: block;
+}
+
+.program-hero__specs-dropdown h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.spec-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.spec-link:hover {
+  background: #fff5ee;
+  color: #e8740c;
+}
+
+.spec-link i {
+  color: #e8740c;
+  font-size: 14px;
+}
+
+/* Hero Right - Enquiry Form */
+.program-hero__form-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.program-hero__form-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.program-hero__form-card p {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #f58220;
+}
+
+.form-group .phone-row {
+  display: flex;
+  gap: 8px;
+}
+
+.form-group .phone-row select {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.form-group .phone-row input {
+  flex: 1;
+}
+
+.form-submit-btn {
+  width: 100%;
+  background: #f58220;
+  color: #fff;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: inherit;
+  margin-top: 4px;
+}
+
+.form-submit-btn:hover {
+  background: #e0710f;
+}
+
+.form-consent {
+  font-size: 11px;
+  color: #999;
+  margin-top: 10px;
+  line-height: 1.5;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.form-consent input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ===== SECTION WRAPPER ===== */
+.section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.section-title-main {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.section-title-main span {
+  color: #f58220;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+/* ===== 5 REASONS SECTION ===== */
+.reasons-section {
+  background: #f9f6f2;
+  padding: 60px 0;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.reason-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.reason-card__number {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #f58220, #e8740c);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.reason-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.reason-card__desc {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ===== FEE & ELIGIBILITY SECTION ===== */
+.fee-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.fee-tabs-container {
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.fee-tab-row {
+  margin-bottom: 20px;
+}
+
+.fee-tab-row h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.fee-toggle-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fee-toggle {
+  padding: 9px 20px;
+  border-radius: 6px;
+  border: 1.5px solid #e0e0e0;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.fee-toggle.active,
+.fee-toggle:hover {
+  border-color: #f58220;
+  background: #fff5ee;
+  color: #e8740c;
+  font-weight: 600;
+}
+
+.fee-result-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 30px;
+  margin-top: 24px;
+  border: 2px solid #f58220;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.fee-result__label {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+.fee-result__original {
+  font-size: 18px;
+  color: #ccc;
+  font-weight: 600;
+  text-decoration: line-through;
+}
+
+.fee-result__arrow {
+  font-size: 28px;
+  color: #e0e0e0;
+}
+
+.fee-result__current {
+  flex: 1;
+}
+
+.fee-result__current p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.fee-result__amount {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f58220;
+  line-height: 1;
+}
+
+.fee-result__per {
+  font-size: 14px;
+  color: #999;
+  margin-left: 6px;
+}
+
+.fee-result__apply-btn {
+  background: #f58220;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.fee-result__apply-btn:hover {
+  background: #e0710f;
+}
+
+.fee-notes {
+  font-size: 12px;
+  color: #888;
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+.fee-notes li {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+/* ===== SCHOLARSHIP BANNER ===== */
+.scholarship-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  padding: 50px 0;
+}
+
+.scholarship-banner__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+}
+
+.scholarship-banner h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.scholarship-banner p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.scholarship-banner p a {
+  color: #f58220;
+}
+
+.scholarship-banner__badge {
+  background: rgba(245,130,32,0.2);
+  border: 2px solid #f58220;
+  color: #f58220;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===== CURRICULUM SECTION ===== */
+.curriculum-section {
+  background: #f9f9f9;
+  padding: 60px 0;
+}
+
+.curriculum-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.curr-stat {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.curr-stat__number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f58220;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.curr-stat__label {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.curriculum-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 32px;
+  transition: background 0.3s;
+  border: none;
+  font-family: inherit;
+}
+
+.curriculum-download-btn:hover {
+  background: #0f3460;
+}
+
+.semester-accordion {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.semester-item {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.semester-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  cursor: pointer;
+  background: #fff;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.semester-item__header:hover {
+  background: #fff5ee;
+}
+
+.semester-item.open .semester-item__header {
+  background: #fff5ee;
+  border-bottom-color: #f0e8df;
+}
+
+.semester-item__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.semester-item__title .sem-num {
+  width: 32px;
+  height: 32px;
+  background: #f58220;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.semester-item__icon {
+  font-size: 18px;
+  color: #888;
+  transition: transform 0.3s;
+}
+
+.semester-item.open .semester-item__icon {
+  transform: rotate(180deg);
+  color: #f58220;
+}
+
+.semester-item__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.semester-item.open .semester-item__body {
+  max-height: 500px;
+}
+
+.semester-item__courses {
+  padding: 16px 22px;
+}
+
+.semester-item__courses li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.semester-item__courses li:last-child {
+  border-bottom: none;
+}
+
+.semester-item__courses li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #f58220;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ===== FACULTY SECTION ===== */
+.faculty-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.faculty-slider-wrapper {
+  position: relative;
+  margin-top: 36px;
+}
+
+.faculty-slider {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+}
+
+.faculty-card {
+  background: #f9f9f9;
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 0 0 calc(33.33% - 16px);
+  min-width: calc(33.33% - 16px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.faculty-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.faculty-card__image {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.faculty-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.faculty-card__body {
+  padding: 20px;
+}
+
+.faculty-card__name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.faculty-card__designation {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.faculty-card__teaching-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f58220;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.faculty-card__teaching {
+  font-size: 13px;
+  color: #555;
+}
+
+/* ===== TOPPERS SECTION ===== */
+.toppers-mba-section {
+  background: #f9f6f2;
+  padding: 60px 0;
+}
+
+.toppers-mba-slider {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  margin-top: 36px;
+}
+
+.topper-mba-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 0 0 calc(33.33% - 14px);
+  min-width: calc(33.33% - 14px);
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.3s;
+}
+
+.topper-mba-card:hover {
+  transform: translateY(-4px);
+}
+
+.topper-mba-card__img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.topper-mba-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.topper-mba-card__body {
+  padding: 18px;
+}
+
+.topper-mba-card__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.topper-mba-card__gpa {
+  font-size: 14px;
+  color: #f58220;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.topper-mba-card__batch {
+  font-size: 12px;
+  color: #999;
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+.testi-mba-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.testi-slider {
+  margin-top: 36px;
+  overflow: hidden;
+}
+
+.testi-mba-card {
+  background: #f9f9f9;
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+}
+
+.testi-mba-card::before {
+  content: '"';
+  font-size: 80px;
+  color: #f58220;
+  opacity: 0.15;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.testi-mba-card__text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.testi-mba-card__profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testi-mba-card__profile img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f58220;
+}
+
+.testi-mba-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.testi-mba-card__program {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ===== DEGREE SECTION ===== */
+.degree-mba-section {
+  background: linear-gradient(135deg, #f9f6f2, #fff);
+  padding: 60px 0;
+}
+
+.degree-mba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.degree-mba-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f0e8df;
+}
+
+.degree-mba-points li:last-child {
+  border-bottom: none;
+}
+
+.degree-mba-points__icon {
+  width: 44px;
+  height: 44px;
+  background: #fff5ee;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.degree-mba-points__icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.degree-mba-points__text h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.degree-mba-points__text p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.degree-mba-image img {
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  width: 100%;
+}
+
+/* ===== PLACEMENT SECTION ===== */
+.placement-mba-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.placement-mba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.placement-mba-image img {
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.placement-mba-text p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+/* ===== ENHANCEMENT SECTION ===== */
+.enhancement-section {
+  background: #f9f6f2;
+  padding: 60px 0;
+}
+
+.enhancement-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.enhancement-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  gap: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  flex-direction: column;
+}
+
+.enhancement-card__img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.enhancement-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.enhancement-card__body {
+  padding: 22px;
+}
+
+.enhancement-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.enhancement-card__desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ===== PLACEMENT LEGACY ===== */
+.legacy-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.legacy-cards {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  margin-top: 36px;
+}
+
+.legacy-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 22px;
+  flex: 0 0 calc(25% - 15px);
+  min-width: calc(25% - 15px);
+  text-align: center;
+  border-top: 3px solid #f58220;
+}
+
+.legacy-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.legacy-card__lpa {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f58220;
+  margin-bottom: 4px;
+}
+
+.legacy-card__lpa-label {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.legacy-card__batch {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.legacy-card__company {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* ===== JOB OPPORTUNITIES SECTION ===== */
+.jobs-section {
+  background: #f9f6f2;
+  padding: 60px 0;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.job-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.job-card__icon {
+  width: 56px;
+  height: 56px;
+  background: #fff5ee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #f58220;
+  flex-shrink: 0;
+}
+
+.job-card__content h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.job-card__count {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f58220;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.job-card__meta p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.job-card__meta span {
+  font-weight: 600;
+  color: #333;
+}
+
+.job-disclaimer {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 24px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ===== RECRUITERS SECTION ===== */
+.recruiters-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.recruiters-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+  align-items: center;
+}
+
+.recruiter-logo {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+}
+
+.recruiter-logo:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.recruiter-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: all 0.3s;
+}
+
+.recruiter-logo:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+/* ===== LMS SECTION ===== */
+.lms-mba-section {
+  background: #f9f9f9;
+  padding: 60px 0;
+}
+
+.lms-mba-cards {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  margin-top: 36px;
+}
+
+.lms-mba-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 0 0 calc(33.33% - 14px);
+  min-width: calc(33.33% - 14px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.3s;
+}
+
+.lms-mba-card:hover {
+  transform: translateY(-4px);
+}
+
+.lms-mba-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.lms-mba-card__body {
+  padding: 18px;
+}
+
+.lms-mba-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.lms-mba-card__desc {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ===== ADMISSION PROCESS ===== */
+.admission-section {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.admission-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+  position: relative;
+}
+
+.admission-steps::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
+  height: 2px;
+  background: #f0e8df;
+  z-index: 0;
+}
+
+.admission-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.admission-step__number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #f58220, #e8740c);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  box-shadow: 0 4px 14px rgba(245,130,32,0.35);
+}
+
+.admission-step__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.admission-step__desc {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}
+
+.admission-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-enroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #f58220, #e8740c);
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(245,130,32,0.35);
+}
+
+.btn-enroll:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(245,130,32,0.45);
+}
+
+/* ===== ADDITIONAL BENEFITS ===== */
+.benefits-section {
+  background: #f9f6f2;
+  padding: 60px 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.benefit-mba-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.benefit-mba-card__icon {
+  width: 48px;
+  height: 48px;
+  background: #fff5ee;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-mba-card__icon img {
+  width: 26px;
+  height: 26px;
+}
+
+.benefit-mba-card__text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.cta-banner p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 28px;
+}
+
+/* ===== SECTION HEADER w/ ARROWS ===== */
+.section-header-with-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.slider-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.slider-arrow-btn {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slider-arrow-btn:hover {
+  border-color: #f58220;
+  background: #fff5ee;
+}
+
+.slider-arrow-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .reasons-grid { grid-template-columns: repeat(3, 1fr); }
+  .curriculum-stats { grid-template-columns: repeat(3, 1fr); }
+  .recruiters-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .program-hero__inner {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+  .program-hero__title { font-size: 22px; }
+  .program-hero__form-card { margin-top: 10px; }
+  .program-hero__specs-dropdown { width: 100%; position: static; }
+  
+  .section-wrapper { padding: 40px 20px; }
+  
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+  .curriculum-stats { grid-template-columns: repeat(2, 1fr); }
+  .semester-accordion { grid-template-columns: 1fr; }
+  
+  .faculty-slider { overflow-x: auto; }
+  .faculty-card { flex: 0 0 280px; min-width: 280px; }
+
+  .degree-mba-grid { grid-template-columns: 1fr; }
+  .placement-mba-grid { grid-template-columns: 1fr; }
+  .enhancement-cards { grid-template-columns: 1fr; }
+  .jobs-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  
+  .admission-steps { 
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .admission-steps::before { display: none; }
+  
+  .recruiters-grid { grid-template-columns: repeat(3, 1fr); }
+  
+  .toppers-mba-slider {
+    overflow-x: auto;
+  }
+  .topper-mba-card { flex: 0 0 260px; min-width: 260px; }
+  
+  .legacy-cards { overflow-x: auto; }
+  .legacy-card { flex: 0 0 220px; min-width: 220px; }
+  
+  .lms-mba-cards { overflow-x: auto; }
+  .lms-mba-card { flex: 0 0 260px; min-width: 260px; }
+  
+  .scholarship-banner__inner { grid-template-columns: 1fr; }
+  
+  .fee-tabs-container { padding: 20px; }
+  .fee-result-card { flex-direction: column; gap: 16px; }
+  
+  .recruitment-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .reasons-grid { grid-template-columns: 1fr; }
+  .curriculum-stats { grid-template-columns: repeat(2, 1fr); }
+  .admission-steps { grid-template-columns: 1fr; }
+  .recruiters-grid { grid-template-columns: repeat(2, 1fr); }
+  .program-hero__buttons { flex-direction: column; }
+}
