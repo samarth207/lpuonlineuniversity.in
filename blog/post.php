@@ -510,9 +510,9 @@ $post['content'] = preg_replace(
             e.preventDefault();
             var btn = form.querySelector('button');
             var msgEl = form.parentElement.querySelector('.lead-form-msg');
-            var nameVal = form.querySelector('input[name="name"]').value.trim();
-            var phoneVal = form.querySelector('input[name="phone"]').value.trim();
-            var courseVal = form.querySelector('input[name="course"]').value.trim();
+            var nameVal = form.querySelector('[name="name"]').value.trim();
+            var phoneVal = form.querySelector('[name="phone"]').value.trim();
+            var courseVal = form.querySelector('[name="course"]').value.trim();
 
             if (!nameVal || !phoneVal || !courseVal) return;
 
