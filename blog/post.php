@@ -74,10 +74,24 @@ $leadFormHtml = '
 <div style="background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:#fff;padding:36px 32px;border-radius:14px;margin:36px 0;text-align:center;position:relative;overflow:hidden;font-family:Inter,sans-serif;">
   <h3 style="color:#fff;margin:0 0 4px;font-size:22px;font-weight:700;">Still Confused? Get Free Expert Guidance</h3>
   <p style="color:#4ade80;font-size:14px;font-weight:600;margin:0 0 22px;">✅ 100% Free</p>
-  <form class="blog-lead-form-live" style="display:flex;gap:10px;max-width:640px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
-    <input type="text" name="name" placeholder="Your Name" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
-    <div style="display:flex;flex:1;min-width:180px;gap:0;">
-      <select name="country_code" style="width:80px;padding:12px 4px;border:1px solid rgba(255,255,255,.18);border-right:none;border-radius:8px 0 0 8px;background:rgba(255,255,255,.08);color:#fff;font-size:13px;font-family:inherit;outline:none;">
+  <form class="blog-lead-form-live" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:680px;margin:0 auto;">
+    <input type="text" name="name" placeholder="Your Name" required style="padding:12px 16px;border:1px solid rgba(255,255,255,.25);border-radius:8px;background:#1e3a5f;color:#fff;font-size:14px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;">
+    <select name="course" required style="padding:12px 16px;border:1px solid rgba(255,255,255,.25);border-radius:8px;background:#1e3a5f;color:#fff;font-size:14px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;appearance:auto;">
+      <option value="" disabled selected style="color:#aaa;">Select Course</option>
+      <option value="MBA">MBA - Master of Business Administration</option>
+      <option value="MCA">MCA - Master of Computer Applications</option>
+      <option value="BBA">BBA - Bachelor of Business Administration</option>
+      <option value="BCA">BCA - Bachelor of Computer Applications</option>
+      <option value="M.Com">M.Com - Master of Commerce</option>
+      <option value="MA English">MA - English</option>
+      <option value="M.Sc Mathematics">M.Sc - Mathematics</option>
+      <option value="M.Sc Economics">M.Sc - Economics</option>
+      <option value="BA">BA - Bachelor of Arts</option>
+      <option value="DBA">DBA - Diploma in Business Administration</option>
+      <option value="DCA">DCA - Diploma in Computer Applications</option>
+    </select>
+    <div style="display:flex;gap:0;grid-column:1/-1;">
+      <select name="country_code" style="width:90px;flex-shrink:0;padding:12px 6px;border:1px solid rgba(255,255,255,.25);border-right:none;border-radius:8px 0 0 8px;background:#1e3a5f;color:#fff;font-size:13px;font-family:inherit;outline:none;box-sizing:border-box;">
         <option value="+91" selected>🇮🇳 +91</option>
         <option value="+1">🇺🇸 +1</option>
         <option value="+44">🇬🇧 +44</option>
@@ -88,10 +102,9 @@ $leadFormHtml = '
         <option value="+65">🇸🇬 +65</option>
         <option value="+61">🇦🇺 +61</option>
       </select>
-      <input type="tel" name="phone" placeholder="Phone Number" required style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:0 8px 8px 0;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
+      <input type="tel" name="phone" placeholder="Phone Number" required style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,.25);border-radius:0 8px 8px 0;background:#1e3a5f;color:#fff;font-size:14px;font-family:inherit;outline:none;box-sizing:border-box;">
+      <button type="submit" style="flex-shrink:0;background:#f58220;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;margin-left:10px;">Get Guidance</button>
     </div>
-    <input type="text" name="course" placeholder="Course" required style="flex:1;min-width:140px;padding:12px 16px;border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-family:inherit;outline:none;">
-    <button type="submit" style="background:#f58220;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;">Get Guidance</button>
   </form>
   <p class="lead-form-msg" style="margin-top:14px;font-size:14px;font-weight:600;display:none;"></p>
 </div>';
