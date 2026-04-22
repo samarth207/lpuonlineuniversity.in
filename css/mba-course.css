@@ -358,96 +358,98 @@
 
 /* ===== SPECIALIZATIONS SECTION ===== */
 .specs-section {
-  background: #fff;
-  padding: 50px 0 40px;
-  border-bottom: 1px solid #f0f0f0;
+  background: #f5f6f8;
+  padding: 46px 0 44px;
 }
 
 .specs-section__inner {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 60px;
 }
 
 /* Header row: title left, arrows right */
 .specs-section__header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .specs-section__title {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: #1a1a1a;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 3px solid #f58220;
   display: inline-block;
+  line-height: 1.2;
 }
 
 /* Left / Right arrows */
 .specs-section__arrows {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  align-items: center;
+  padding-bottom: 4px;
 }
 
 .specs-arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  font-size: 18px;
-  font-weight: 700;
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
   font-family: inherit;
+  line-height: 1;
 }
 
 .specs-arrow--prev {
-  background: #fff;
-  color: #aaa;
-  border: 1.5px solid #e0e0e0;
+  background: transparent;
+  color: #888;
+  border: none;
+  font-size: 22px;
 }
 
 .specs-arrow--prev:hover {
-  border-color: #ccc;
-  color: #555;
+  color: #444;
 }
 
 .specs-arrow--next {
   background: #f58220;
   color: #fff;
-  border: 1.5px solid #f58220;
+  border: none;
+  font-size: 22px;
 }
 
 .specs-arrow--next:hover {
   background: #e0710f;
-  border-color: #e0710f;
 }
 
 /* Slick Slider container */
 .specs-slider {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 /* Each specialization card */
 .spec-item {
   background: #fdf3ee;
-  border-radius: 6px;
-  padding: 28px 20px 24px;
+  border-radius: 4px;
+  padding: 24px 20px 28px;
   display: flex !important;
   flex-direction: column;
   align-items: flex-start;
   cursor: pointer;
-  transition: background 0.25s, color 0.25s;
-  margin: 0 8px;
-  min-height: 160px;
-  position: relative;
-  text-decoration: none;
+  transition: background 0.2s;
+  margin: 0 10px;
+  box-sizing: border-box;
 }
 
 .spec-item:hover {
@@ -455,79 +457,102 @@
 }
 
 .spec-item:hover .spec-item__icon {
-  background: rgba(255,255,255,0.25);
-  color: #fff;
+  background: rgba(255,255,255,0.22);
 }
 
 .spec-item:hover .spec-item__name {
   color: #fff;
 }
 
-/* Orange circle icon */
+/* Orange circle icon — forced square via min/max width for Slick compat */
 .spec-item__icon {
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+  min-height: 62px;
+  max-width: 62px;
+  max-height: 62px;
   background: #f58220;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 28px;
   color: #fff;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   flex-shrink: 0;
-  transition: background 0.25s;
+  transition: background 0.2s;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.spec-item__icon i {
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 /* Name text */
 .spec-item__name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #1a1a1a;
-  line-height: 1.4;
-  transition: color 0.25s;
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+  line-height: 1.5;
+  transition: color 0.2s;
+  margin: 0;
 }
 
 /* Note text */
 .specs-section__note {
-  font-size: 13px;
+  font-size: 12.5px;
   color: #444;
-  line-height: 1.7;
-  margin-top: 4px;
+  line-height: 1.75;
+  margin-top: 8px;
 }
 
 .specs-section__note strong {
   color: #f58220;
+  font-weight: 700;
 }
 
-/* Slick override: show 4 slides, no dots */
+/* Fix Slick slide layout */
+.specs-slider .slick-list {
+  overflow: hidden;
+}
+
 .specs-slider .slick-track {
   display: flex;
-  align-items: stretch;
 }
 
 .specs-slider .slick-slide {
-  height: auto;
+  display: flex !important;
+  flex-direction: column;
 }
 
 .specs-slider .slick-slide > div {
-  height: 100%;
+  display: flex;
+  flex: 1;
 }
 
-.specs-slider .spec-item {
-  height: 100%;
+.specs-slider .slick-slide .spec-item {
+  flex: 1;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .specs-section__inner {
-    padding: 0 24px;
+    padding: 0 32px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .specs-section__inner {
+    padding: 0 20px;
+  }
   .specs-section__title {
     font-size: 22px;
   }
+}
+
+@media (max-width: 480px) {
   .specs-section__inner {
     padding: 0 16px;
   }
