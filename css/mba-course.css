@@ -356,6 +356,199 @@
   line-height: 1.6;
 }
 
+/* ===== SPECIALIZATIONS SECTION ===== */
+.specs-section {
+  background: #fff;
+  padding: 70px 0;
+}
+
+.specs-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 36px;
+}
+
+.spec-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.spec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.spec-card__icon-wrap {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.spec-card__body {
+  padding: 18px 18px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.spec-card__desc {
+  font-size: 12.5px;
+  color: #666;
+  line-height: 1.65;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.spec-card__roles {
+  margin-top: auto;
+}
+
+.spec-card__role-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  display: block;
+  margin-bottom: 7px;
+}
+
+.spec-card__role-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.spec-card__role-tags span {
+  background: #fff5ee;
+  color: #e8740c;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid #fde0c3;
+}
+
+.spec-card__apply {
+  display: block;
+  text-align: center;
+  padding: 11px;
+  background: #f58220;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  border-top: 1px solid rgba(245,130,32,0.15);
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.spec-card__apply:hover {
+  background: #e0710f;
+}
+
+/* Dual Spec Banner */
+.specs-dual-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+  border-radius: 14px;
+  padding: 28px 36px;
+  flex-wrap: wrap;
+}
+
+.specs-dual-banner__icon {
+  width: 54px;
+  height: 54px;
+  background: rgba(245,130,32,0.2);
+  border: 2px solid #f58220;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #f58220;
+  flex-shrink: 0;
+}
+
+.specs-dual-banner h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.specs-dual-banner p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+
+.specs-dual-banner > div {
+  flex: 1;
+}
+
+.specs-dual-banner__btn {
+  background: #f58220;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.specs-dual-banner__btn:hover {
+  background: #e0710f;
+}
+
+@media (max-width: 1100px) {
+  .specs-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .specs-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .specs-dual-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .specs-section__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== 5 REASONS SECTION ===== */
 .reasons-section {
   background: #f9f6f2;
