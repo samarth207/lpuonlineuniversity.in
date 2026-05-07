@@ -1,5 +1,6 @@
 <?php
 // Form submission handler — single endpoint for all forms
+session_start();
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
@@ -65,6 +66,7 @@ try {
         $user_agent
     ]);
 
+    $_SESSION['form_submitted'] = true;
     echo json_encode(['success' => true, 'message' => 'Form submitted successfully.']);
 } catch (PDOException $e) {
     http_response_code(500);

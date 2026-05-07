@@ -12,6 +12,9 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.lpuonlineuniversity\.in [NC]
 RewriteRule ^(.*)$ https://lpuonlineuniversity.in/$1 [R=301,L]
 
+# --- Clean URL for thank-you (PHP session-guarded page) ---
+RewriteRule ^thank-you/?$ thank-you.php [NC,L]
+
 # --- Remove .html extension for clean URLs ---
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f

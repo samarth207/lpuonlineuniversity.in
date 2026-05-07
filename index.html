@@ -2784,14 +2784,8 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         formData.append('page_source', 'index.html');
         fetch('submit_form.php', { method: 'POST', body: formData })
           .then(function(r) { return r.json(); })
-          .then(function(data) {
-            body.innerHTML = '<div class="popup-form__success"><i class="la la-check-circle"></i><h4>Thank You!</h4><p>Your enquiry has been submitted successfully. Our team will contact you shortly.</p></div>';
-            setTimeout(function() { closeAllPopups(); location.reload(); }, 3000);
-          })
-          .catch(function() {
-            body.innerHTML = '<div class="popup-form__success"><i class="la la-check-circle"></i><h4>Thank You!</h4><p>Your enquiry has been submitted successfully. Our team will contact you shortly.</p></div>';
-            setTimeout(function() { closeAllPopups(); location.reload(); }, 3000);
-          });
+          .then(function() { window.location.href = '/thank-you'; })
+          .catch(function() { window.location.href = '/thank-you'; });
       });
 
       document.getElementById('applyForm').addEventListener('submit', function(e) {
@@ -2809,14 +2803,8 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         formData.append('page_source', 'index.html');
         fetch('submit_form.php', { method: 'POST', body: formData })
           .then(function(r) { return r.json(); })
-          .then(function(data) {
-            body.innerHTML = '<div class="popup-form__success"><i class="la la-check-circle"></i><h4>Application Submitted!</h4><p>Your application has been received. We\'ll get in touch with you soon.</p></div>';
-            setTimeout(function() { closeAllPopups(); location.reload(); }, 3000);
-          })
-          .catch(function() {
-            body.innerHTML = '<div class="popup-form__success"><i class="la la-check-circle"></i><h4>Application Submitted!</h4><p>Your application has been received. We\'ll get in touch with you soon.</p></div>';
-            setTimeout(function() { closeAllPopups(); location.reload(); }, 3000);
-          });
+          .then(function() { window.location.href = '/thank-you'; })
+          .catch(function() { window.location.href = '/thank-you'; });
       });
 
       // ===== Auto-open Enquire Now popup after 8 seconds =====

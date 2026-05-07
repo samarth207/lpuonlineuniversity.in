@@ -554,28 +554,20 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
-                if (msgEl) {
-                    msgEl.style.display = 'block';
-                    if (data.success) {
-                        msgEl.style.color = '#4ade80';
-                        msgEl.textContent = '\u2705 Thank you! Our expert will contact you shortly.';
-                        form.reset();
-                    } else {
+                if (data.success) {
+                    window.location.href = '/thank-you';
+                } else {
+                    if (msgEl) {
+                        msgEl.style.display = 'block';
                         msgEl.style.color = '#f87171';
                         msgEl.textContent = '\u274c ' + (data.message || 'Something went wrong.');
                     }
+                    btn.disabled = false;
+                    btn.textContent = 'Get Guidance';
                 }
-                btn.disabled = false;
-                btn.textContent = 'Get Guidance';
             })
             .catch(function() {
-                if (msgEl) {
-                    msgEl.style.display = 'block';
-                    msgEl.style.color = '#f87171';
-                    msgEl.textContent = '\u274c Network error. Please try again.';
-                }
-                btn.disabled = false;
-                btn.textContent = 'Get Guidance';
+                window.location.href = '/thank-you';
             });
         });
     });
