@@ -78,6 +78,9 @@ function getPostCategories($pdo, $postId) {
 
 $canonicalUrl = BLOG_URL . '/';
 if ($categorySlug) $canonicalUrl .= '?category=' . urlencode($categorySlug);
+$seoTitle = strlen($pageMetaTitle) > 60 ? substr($pageMetaTitle, 0, 57) . '...' : $pageMetaTitle;
+$seoDescription = strlen($pageMetaDesc) > 155 ? substr($pageMetaDesc, 0, 152) . '...' : $pageMetaDesc;
+$ogImage = SITE_URL . '/images/slider/admission-open-jan-26.webp';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,24 +88,39 @@ if ($categorySlug) $canonicalUrl .= '?category=' . urlencode($categorySlug);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f58220">
+    <meta name="author" content="LPU Online University">
+    <meta name="format-detection" content="telephone=no">
 
     <link rel="icon" type="image/png" sizes="32x32" href="../images/lpu-favicon.png">
-    <title><?= $pageMetaTitle ?></title>
-    <meta name="description" content="<?= e($pageMetaDesc) ?>">
+    <title><?= e($seoTitle) ?></title>
+    <meta name="description" content="<?= e($seoDescription) ?>">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="<?= e($canonicalUrl) ?>">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= e($canonicalUrl) ?>">
-    <meta property="og:title" content="<?= e($pageMetaTitle) ?>">
-    <meta property="og:description" content="<?= e($pageMetaDesc) ?>">
+    <meta property="og:title" content="<?= e($seoTitle) ?>">
+    <meta property="og:description" content="<?= e($seoDescription) ?>">
+    <meta property="og:image" content="<?= e($ogImage) ?>">
+    <meta property="og:image:alt" content="LPU Online blog resources">
     <meta property="og:site_name" content="LPU Online University">
+
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<?= e($canonicalUrl) ?>">
+    <meta name="twitter:title" content="<?= e($seoTitle) ?>">
+    <meta name="twitter:description" content="<?= e($seoDescription) ?>">
+    <meta name="twitter:image" content="<?= e($ogImage) ?>">
+
+    <link rel="dns-prefetch" href="//connect.facebook.net">
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"></noscript>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="assets/css/blog.css">
 
@@ -146,7 +164,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         <div class="header__inner">
             <div class="header__logo">
                 <a href="/" aria-label="LPU Online University Home">
-                    <img src="../images/LPU-Online-Logo.svg" alt="LPU Online University" width="280" height="60">
+                    <img src="../images/LPU-Online-Logo.svg" alt="LPU Online University" title="LPU Online University" width="280" height="60" loading="eager" decoding="async">
                 </a>
             </div>
             <nav class="header__nav" aria-label="Main Navigation">
@@ -215,7 +233,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
                                     <img src="<?= e(UPLOAD_URL . '/blog/' . $post['feature_image']) ?>"
                                          alt="<?= e($post['feature_image_alt'] ?: $post['title']) ?>"
                                          <?= $post['feature_image_title'] ? 'title="' . e($post['feature_image_title']) . '"' : '' ?>
-                                         class="blog-card__image" loading="lazy" width="400" height="210">
+                                         class="blog-card__image" loading="lazy" width="400" height="210" decoding="async">
                                 <?php else: ?>
                                     <div class="blog-card__image-placeholder"><i class="las la-image"></i></div>
                                 <?php endif; ?>
@@ -293,7 +311,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         <div class="footer__inner">
             <div class="footer__top">
                 <div class="footer__logo">
-                    <img src="../images/footer-logo.svg" alt="LPU Online University" width="240" height="52">
+                    <img src="../images/footer-logo.svg" alt="LPU Online University" title="LPU Online University" width="240" height="52" loading="lazy" decoding="async">
                 </div>
                 <div class="footer__contact">
                     <div class="footer__contact-item">

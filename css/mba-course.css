@@ -225,6 +225,73 @@ ul, ol { list-style: none; }
 .hero-accreditations__label { font-size: 12px; color: #999; width: 100%; }
 .accred-logo { height: 36px; width: auto; object-fit: contain; filter: grayscale(30%); }
 
+/* ========== SPECIALIZATIONS SECTION ========== */
+.specializations-section { padding: 30px 0 60px; background: #fff; }
+.specializations-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.specializations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.specialization-card {
+  display: block;
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f0 100%);
+  border: 1px solid #f1dfca;
+  border-radius: 16px;
+  padding: 22px 18px;
+  min-height: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 8px 30px rgba(232, 116, 12, 0.06);
+}
+.specialization-card:hover {
+  transform: translateY(-4px);
+  border-color: #e8740c;
+  box-shadow: 0 12px 30px rgba(232, 116, 12, 0.12);
+}
+.specialization-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff3e0;
+  color: #e8740c;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.specialization-card__title {
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+}
+.specialization-card__desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #555;
+  margin-bottom: 14px;
+}
+.specialization-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8740c;
+}
+.specializations-note {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+  background: #fffaf5;
+  border: 1px solid #f3dec9;
+  padding: 16px 18px;
+  border-radius: 12px;
+}
+
 /* Hero Form */
 .hero-form-wrap {
   background: #fff;
@@ -326,140 +393,186 @@ ul, ol { list-style: none; }
 .section-header--left .section-header__title::before { margin: 0 0 10px 0; }
 
 /* ========== WHY CHOOSE SECTION ========== */
-.why-section { padding: 60px 0; background: #fff; }
-.why-grid {
+.why-section { padding: 56px 0; background: #f4f4f4; }
+.why-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-}
-.why-card {
-  background: #fff;
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  padding: 24px 16px;
-  text-align: center;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.why-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-4px); }
-.why-card__num {
-  width: 40px; height: 40px;
-  background: linear-gradient(135deg, #e8740c, #f5a623);
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
+  grid-template-columns: 58% 42%;
+  gap: 28px;
   align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-  margin: 0 auto 14px;
 }
-.why-card__title { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 8px; }
-.why-card__desc { font-size: 13px; color: #666; line-height: 1.5; }
+.why-heading {
+  font-size: 46px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #2d2f36;
+  margin-bottom: 22px;
+}
+.why-heading span {
+  font-weight: 400;
+  border-bottom: 4px solid #e8740c;
+  padding-bottom: 2px;
+}
+.why-item {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.why-item:last-child { margin-bottom: 0; }
+.why-item__num {
+  font-size: 84px;
+  line-height: 0.84;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px #f3b786;
+  text-stroke: 1px #f3b786;
+}
+.why-item__title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #2d2f36;
+  margin-bottom: 4px;
+}
+.why-item__desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #2d2f36;
+}
+.why-right img {
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
+}
 
 /* ========== USPS SECTION ========== */
-.usps-section { padding: 60px 0; background: #fafafa; }
+.usps-section { padding: 56px 0 44px; background: #f4f4f4; }
 .usps-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .usps-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
   flex-wrap: wrap;
   gap: 16px;
 }
-.usps-title { font-weight: 300; font-size: 28px; color: #333; }
-.usps-title-bold { font-weight: 800; font-size: 28px; color: #111; }
+.usps-heading {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #2d2f36;
+}
+.usps-heading span {
+  font-weight: 400;
+  border-bottom: 4px solid #e8740c;
+  padding-bottom: 2px;
+}
 .usps-nav { display: flex; gap: 10px; }
 .usps-nav-btn {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  background: #fff;
+  width: 54px;
+  height: 54px;
+  border-radius: 0;
+  border: 1px solid #e4e4e4;
+  background: #f2f2ee;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  color: #555;
+  color: #111;
 }
 .usps-nav-btn.active,
 .usps-nav-btn:hover { background: #e8740c; border-color: #e8740c; color: #fff; }
 .usps-slider-wrap { overflow: hidden; }
-.usps-slider { display: flex; gap: 24px; transition: transform 0.4s ease; }
+.usps-slider { display: flex; gap: 16px; transition: transform 0.4s ease; }
 .usps-card {
-  flex: 0 0 calc(33.333% - 16px);
-  background: #fff;
-  border-radius: 14px;
-  padding: 28px 24px;
-  border-left: 4px solid #e8740c;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  flex: 0 0 calc(25% - 12px);
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 18px 20px;
+  border: 1px solid #eadfda;
+  box-shadow: 0 2px 10px rgba(232, 116, 12, 0.2);
+  min-height: 170px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.usps-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
-.usps-card__icon { font-size: 28px; color: #e8740c; margin-bottom: 12px; }
-.usps-card__title { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 8px; }
-.usps-card__desc { font-size: 14px; color: #666; line-height: 1.6; }
+.usps-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(232, 116, 12, 0.25); }
+.usps-card__title { font-size: 15px; font-weight: 700; color: #3e3e3e; margin-bottom: 20px; }
+.usps-card__desc { font-size: 12px; color: #4a4a4a; line-height: 1.45; }
 
 /* ========== CURRICULUM SECTION ========== */
-.curriculum-section { padding: 60px 0; background: #fff; }
+.curriculum-section { padding: 44px 0 34px; background: #f4f4f4; }
 .curriculum-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .curriculum-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
   gap: 16px;
 }
-.curriculum-title { font-weight: 300; font-size: 28px; color: #333; }
-.curriculum-title-bold { font-weight: 800; font-size: 28px; color: #111; }
+.curriculum-heading {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #2d2f36;
+}
+.curriculum-heading span {
+  font-weight: 400;
+  border-bottom: 4px solid #e8740c;
+  padding-bottom: 2px;
+}
 .btn-download {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
-  color: #e8740c;
-  padding: 11px 22px;
-  border-radius: 8px;
-  font-weight: 700;
+  background: #f38820;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
   font-size: 14px;
-  border: 2px solid #e8740c;
+  border: none;
   cursor: pointer;
   transition: background 0.3s;
   white-space: nowrap;
+  text-transform: uppercase;
 }
-.btn-download:hover { background: #fff3e0; }
+.btn-download i { display: none; }
+.btn-download:hover { background: #d97411; }
 
 /* Curriculum Stats */
 .curriculum-stats {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 26px;
+  margin-bottom: 34px;
 }
 .curr-stat {
-  background: #fafafa;
-  border-radius: 12px;
-  padding: 18px 14px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  border: 1px solid #f0f0f0;
+  gap: 10px;
+  border: none;
+  text-align: center;
 }
-.curr-stat__icon {
-  width: 44px; height: 44px;
-  background: linear-gradient(135deg, #e8740c, #f5a623);
-  border-radius: 10px;
+.curr-stat__badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f38820;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 20px;
-  flex-shrink: 0;
 }
-.curr-stat__number { font-size: 22px; font-weight: 800; color: #111; line-height: 1; }
-.curr-stat__label { font-size: 11px; color: #777; margin-top: 3px; line-height: 1.3; }
+.curr-stat__img { width: 31px; height: 31px; object-fit: contain; filter: brightness(0) invert(1); }
+.curr-stat__number { font-size: 25px; font-weight: 500; color: #1f3552; line-height: 1;margin-top: 4px; }
+.curr-stat__label { font-size: 12px; color: #1f3552; margin-top: 2px; line-height: 1.4; max-width: 170px; }
 
 /* Semester Accordion */
 .semester-accordion { display: flex; flex-direction: column; gap: 0; }
@@ -581,39 +694,75 @@ ul, ol { list-style: none; }
 
 /* ========== TOPPERS SECTION ========== */
 .toppers-section { padding: 60px 0; background: #fafafa; }
+.toppers-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.toppers-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.toppers-section__subtitle { font-size: 14px; color: #888; margin-bottom: 28px; }
+.toppers-section__nav { display: flex; gap: 8px; }
 .toppers-slider-wrap { overflow: hidden; position: relative; }
 .toppers-slider { display: flex; gap: 24px; transition: transform 0.4s ease; }
 .topper-card {
   flex: 0 0 calc(25% - 18px);
   background: #fff;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   text-align: center;
-  padding-bottom: 20px;
+  padding: 24px 16px 20px;
   transition: transform 0.3s;
 }
 .topper-card:hover { transform: translateY(-4px); }
-.topper-card__image { width: 100%; aspect-ratio: 1; background: #f5f5f5; overflow: hidden; }
-.topper-card__image img { width: 100%; height: 100%; object-fit: cover; }
-.topper-card__name { font-size: 15px; font-weight: 700; color: #111; margin: 14px 14px 4px; }
-.topper-card__gpa { font-size: 14px; color: #e8740c; font-weight: 600; margin: 0 14px 4px; }
-.topper-card__batch { font-size: 12px; color: #888; margin: 0 14px; }
-.toppers-nav { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
-.toppers-nav-btn {
-  width: 38px; height: 38px;
+.topper-card__avatar {
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  border: 2px solid #ddd;
+  overflow: hidden;
+  margin: 0 auto 14px;
+  background: #f5f5f5;
+}
+.topper-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.topper-card__name { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 6px; }
+.topper-card__gpa { font-size: 14px; color: #e8740c; font-weight: 600; margin-bottom: 10px; }
+.topper-card__program-label { font-size: 12px; color: #aaa; margin-bottom: 2px; }
+.topper-card__program { font-size: 13px; color: #555; margin-bottom: 6px; line-height: 1.4; }
+.topper-card__batch { font-size: 12px; color: #888; }
+.toppers-nav-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
   background: #fff;
   cursor: pointer;
-  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  color: #555;
+  padding: 0;
 }
-.toppers-nav-btn:hover { background: #e8740c; border-color: #e8740c; color: #fff; }
+.toppers-nav-btn img { width: 16px; height: 16px; }
+.toppers-nav-btn:hover { background: #e8740c; border-color: #e8740c; }
+.toppers-nav-btn:hover img { filter: brightness(0) invert(1); }
+
+/* ========== HIRING PARTNERS SECTION ========== */
+.hiring-partners-section { padding: 50px 0; background: #fff; }
+.hiring-partners__inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.hiring-partners__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hiring-slider-wrap { overflow: hidden; }
+.hiring-slider { display: flex; transition: transform 0.4s ease; }
+.hiring-slide { flex: 0 0 100%; }
+.hiring-slide img { width: 100%; height: auto; display: block; }
 
 /* ========== TESTIMONIALS SECTION ========== */
 .testimonials-section { padding: 60px 0; background: #fff; }
@@ -788,21 +937,6 @@ ul, ol { list-style: none; }
 .footer__contact-item a { color: #bbb; transition: color 0.3s; }
 .footer__contact-item a:hover { color: #e8740c; }
 .footer__contact-note { font-size: 12px; color: #888; }
-.footer__links {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  margin-bottom: 30px;
-}
-.footer__col-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 14px; }
-.footer__col a {
-  display: block;
-  font-size: 13px;
-  color: #999;
-  margin-bottom: 8px;
-  transition: color 0.3s;
-}
-.footer__col a:hover { color: #e8740c; }
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 20px;
@@ -814,8 +948,11 @@ ul, ol { list-style: none; }
   font-size: 13px;
   color: #888;
 }
-.footer__bottom a { color: #888; transition: color 0.3s; }
-.footer__bottom a:hover { color: #e8740c; }
+.footer__copyright { margin: 0; color: #888; }
+.footer__bottom-links { display: flex; align-items: center; gap: 8px; }
+.footer__bottom-links a { color: #888; transition: color 0.3s; }
+.footer__bottom-links a:hover { color: #e8740c; }
+.footer__bottom-links span { color: #666; }
 .footer__social { display: flex; gap: 10px; }
 .footer__social a {
   width: 36px; height: 36px;
@@ -920,14 +1057,20 @@ ul, ol { list-style: none; }
 @media (max-width: 1024px) {
   .hero-section__inner { grid-template-columns: 1fr; }
   .hero-form-wrap { position: static; }
-  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .specializations-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-section__inner { grid-template-columns: 1fr; gap: 18px; }
+  .why-right img { margin: 0 auto; max-width: 480px; }
+  .why-heading { font-size: 34px; }
   .curriculum-stats { grid-template-columns: repeat(3, 1fr); }
+  .usps-heading,
+  .curriculum-heading { font-size: 34px; }
+  .usps-card__title { font-size: 26px; }
   .faculty-card { flex: 0 0 calc(50% - 12px); }
   .usps-card { flex: 0 0 calc(50% - 12px); }
   .degree-grid { grid-template-columns: 1fr; }
   .placement-grid { grid-template-columns: 1fr; }
   .footer__top { grid-template-columns: 1fr; }
-  .footer__links { grid-template-columns: repeat(2, 1fr); }
+  .topper-card { flex: 0 0 calc(50% - 12px); }
 }
 
 @media (max-width: 768px) {
@@ -935,14 +1078,26 @@ ul, ol { list-style: none; }
   .header__actions { display: none; }
   .header__toggle { display: block; }
   .hero-title { font-size: 26px; }
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .specializations-grid { grid-template-columns: 1fr; }
+  .why-heading { font-size: 30px; }
+  .why-item { grid-template-columns: 42px 1fr; }
+  .why-item__num { font-size: 64px; }
+  .why-item__title { font-size: 18px; }
   .curriculum-stats { grid-template-columns: repeat(2, 1fr); }
+  .usps-heading,
+  .curriculum-heading { font-size: 28px; }
+  .usps-nav-btn { width: 44px; height: 44px; font-size: 18px; }
+  .usps-card { min-height: auto; }
+  .usps-card__title { font-size: 24px; }
+  .usps-card__desc { font-size: 14px; }
+  .curr-stat__number { font-size: 30px; }
+  .curr-stat__label { font-size: 13px; }
   .jobs-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .lms-grid { grid-template-columns: 1fr; }
   .admission-steps { grid-template-columns: repeat(2, 1fr); }
   .admission-steps::before { display: none; }
-  .footer__links { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; text-align: center; }
   .topper-card { flex: 0 0 calc(50% - 12px); }
   .section-header__title { font-size: 24px; }
   .usps-card { flex: 0 0 calc(100%); }
@@ -951,8 +1106,19 @@ ul, ol { list-style: none; }
 @media (max-width: 480px) {
   .hero-stats { gap: 14px; }
   .hero-actions { flex-direction: column; }
-  .why-grid { grid-template-columns: 1fr; }
+  .why-heading { font-size: 23px; }
+  .why-item__title { font-size: 17px; }
+  .why-item__desc { font-size: 14px; }
+  .why-item__num { font-size: 52px; }
   .curriculum-stats { grid-template-columns: 1fr 1fr; }
+  .usps-heading,
+  .curriculum-heading { font-size: 23px; }
+  .btn-download { width: 100%; justify-content: center; }
+  .curriculum-stats { gap: 18px; }
+  .curr-stat__badge { width: 56px; height: 56px; }
+  .curr-stat__img { width: 28px; height: 28px; }
+  .curr-stat__number { font-size: 26px; }
+  .curr-stat__label { font-size: 12px; max-width: 130px; }
   .admission-steps { grid-template-columns: 1fr; }
   .footer__contact-row { flex-direction: column; }
   .footer__bottom { flex-direction: column; text-align: center; }

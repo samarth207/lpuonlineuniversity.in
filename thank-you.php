@@ -16,6 +16,9 @@ unset($_SESSION['form_submitted']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#f58220">
+  <meta name="author" content="LPU Online University">
+  <meta name="format-detection" content="telephone=no">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/lpu-favicon.png">
@@ -27,13 +30,27 @@ unset($_SESSION['form_submitted']);
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://lpuonlineuniversity.in/thank-you">
 
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lpuonlineuniversity.in/thank-you">
+  <meta property="og:title" content="Thank You | LPU Online University">
+  <meta property="og:description" content="Thank you for connecting with LPU Online University. Our admissions team will contact you shortly.">
+  <meta property="og:site_name" content="LPU Online University">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Thank You | LPU Online University">
+  <meta name="twitter:description" content="Thank you for connecting with LPU Online University. Our admissions team will contact you shortly.">
+
+  <link rel="dns-prefetch" href="//connect.facebook.net">
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
   <!-- Line Awesome Icons -->
-  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <link rel="preload" as="style" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"></noscript>
 
   <!-- Page CSS -->
   <link rel="stylesheet" href="css/index.css">
@@ -189,7 +206,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
     <div class="header__inner">
       <div class="header__logo">
         <a href="/" aria-label="LPU Online University Home">
-          <img src="images/LPU-Online-Logo.svg" alt="LPU Online University" width="280" height="60">
+          <img src="images/LPU-Online-Logo.svg" alt="LPU Online University" title="LPU Online University" width="280" height="60" loading="eager" decoding="async">
         </a>
       </div>
       <nav class="header__nav" aria-label="Main Navigation">

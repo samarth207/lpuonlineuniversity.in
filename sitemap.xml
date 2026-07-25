@@ -30,18 +30,19 @@
     </image:image>
   </url>
 
-  <!-- Program Pages (when created) -->
+  <!-- Program Pages -->
+
   <url>
-    <loc>https://lpuonlineuniversity.in/online-mba.html</loc>
-    <lastmod>2026-02-08</lastmod>
+    <loc>https://lpuonlineuniversity.in/online-mba-course.html</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://lpuonlineuniversity.in/online-mca.html</loc>
-    <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://lpuonlineuniversity.in/blog/</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 

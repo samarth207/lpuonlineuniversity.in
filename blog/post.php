@@ -58,6 +58,8 @@ $canonicalUrl = BLOG_URL . '/' . $post['slug'];
 $featureImageUrl = $post['feature_image'] ? UPLOAD_URL . '/blog/' . $post['feature_image'] : '';
 $publishDate = $post['publish_date'] ?: date('Y-m-d', strtotime($post['created_at']));
 $modifiedDate = $post['last_updated'] ?: $post['created_at'];
+$seoTitle = strlen($metaTitle) > 60 ? substr($metaTitle, 0, 57) . '...' : $metaTitle;
+$seoDescription = strlen($metaDescription) > 155 ? substr($metaDescription, 0, 152) . '...' : $metaDescription;
 
 // Check for FAQ section in content
 $hasFAQ = strpos($post['content'], 'faq-section') !== false;
@@ -122,10 +124,13 @@ $post['content'] = preg_replace(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f58220">
+    <meta name="author" content="LPU Online University">
+    <meta name="format-detection" content="telephone=no">
 
     <link rel="icon" type="image/png" sizes="32x32" href="../images/lpu-favicon.png">
-    <title><?= e($metaTitle) ?></title>
-    <meta name="description" content="<?= e(substr($metaDescription, 0, 160)) ?>">
+    <title><?= e($seoTitle) ?></title>
+    <meta name="description" content="<?= e($seoDescription) ?>">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="<?= e($canonicalUrl) ?>">
     <?php if ($post['focus_keyword']): ?>
@@ -135,8 +140,8 @@ $post['content'] = preg_replace(
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="<?= e($canonicalUrl) ?>">
-    <meta property="og:title" content="<?= e($metaTitle) ?>">
-    <meta property="og:description" content="<?= e(substr($metaDescription, 0, 200)) ?>">
+    <meta property="og:title" content="<?= e($seoTitle) ?>">
+    <meta property="og:description" content="<?= e($seoDescription) ?>">
     <?php if ($featureImageUrl): ?>
     <meta property="og:image" content="<?= e($featureImageUrl) ?>">
     <meta property="og:image:alt" content="<?= e($post['feature_image_alt'] ?: $post['title']) ?>">
@@ -150,16 +155,22 @@ $post['content'] = preg_replace(
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= e($metaTitle) ?>">
-    <meta name="twitter:description" content="<?= e(substr($metaDescription, 0, 200)) ?>">
+    <meta name="twitter:url" content="<?= e($canonicalUrl) ?>">
+    <meta name="twitter:title" content="<?= e($seoTitle) ?>">
+    <meta name="twitter:description" content="<?= e($seoDescription) ?>">
     <?php if ($featureImageUrl): ?>
     <meta name="twitter:image" content="<?= e($featureImageUrl) ?>">
     <?php endif; ?>
 
+    <link rel="dns-prefetch" href="//connect.facebook.net">
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="style" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"></noscript>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="assets/css/blog.css">
 
@@ -263,7 +274,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         <div class="header__inner">
             <div class="header__logo">
                 <a href="/" aria-label="LPU Online University Home">
-                    <img src="../images/LPU-Online-Logo.svg" alt="LPU Online University" width="280" height="60">
+                    <img src="../images/LPU-Online-Logo.svg" alt="LPU Online University" title="LPU Online University" width="280" height="60" loading="eager" decoding="async">
                 </a>
             </div>
             <nav class="header__nav" aria-label="Main Navigation">
@@ -316,7 +327,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
                                 <span class="post-meta__item">
                                     <?php if ($post['author_image']): ?>
                                         <img src="<?= e(UPLOAD_URL . '/authors/' . $post['author_image']) ?>"
-                                             alt="<?= e($post['author_name']) ?>" class="post-author-avatar" width="28" height="28">
+                                            alt="<?= e($post['author_name']) ?>" title="<?= e($post['author_name']) ?>" class="post-author-avatar" width="28" height="28" loading="lazy" decoding="async">
                                     <?php endif; ?>
                                     <span>By <?= e($post['author_name']) ?></span>
                                 </span>
@@ -338,7 +349,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
                             <img src="<?= e($featureImageUrl) ?>"
                                  alt="<?= e($post['feature_image_alt'] ?: $post['title']) ?>"
                                  <?= $post['feature_image_title'] ? 'title="' . e($post['feature_image_title']) . '"' : '' ?>
-                                 width="1200" height="628" class="post-feature-img" loading="eager">
+                                   width="1200" height="628" class="post-feature-img" loading="eager" decoding="async" fetchpriority="high">
                         </figure>
                     <?php endif; ?>
 
@@ -386,7 +397,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
                     <div class="author-box">
                         <?php if ($post['author_image']): ?>
                             <img src="<?= e(UPLOAD_URL . '/authors/' . $post['author_image']) ?>"
-                                 alt="<?= e($post['author_name']) ?>" class="author-box__avatar" width="80" height="80">
+                                   alt="<?= e($post['author_name']) ?>" title="<?= e($post['author_name']) ?>" class="author-box__avatar" width="80" height="80" loading="lazy" decoding="async">
                         <?php endif; ?>
                         <div class="author-box__info">
                             <h3 class="author-box__name">
@@ -413,7 +424,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
                                 <?php if ($rel['feature_image']): ?>
                                     <img src="<?= e(UPLOAD_URL . '/blog/' . $rel['feature_image']) ?>"
                                          alt="<?= e($rel['feature_image_alt'] ?: $rel['title']) ?>"
-                                         class="related-card__img" loading="lazy" width="300" height="157">
+                                         class="related-card__img" loading="lazy" width="300" height="157" decoding="async" title="<?= e($rel['title']) ?>">
                                 <?php endif; ?>
                                 <div class="related-card__body">
                                     <h3 class="related-card__title"><?= e($rel['title']) ?></h3>
@@ -454,7 +465,7 @@ src="https://www.facebook.com/tr?id=1470311560891339&ev=PageView&noscript=1"
         <div class="footer__inner">
             <div class="footer__top">
                 <div class="footer__logo">
-                    <img src="../images/footer-logo.svg" alt="LPU Online University" width="240" height="52">
+                    <img src="../images/footer-logo.svg" alt="LPU Online University" title="LPU Online University" width="240" height="52" loading="lazy" decoding="async">
                 </div>
                 <div class="footer__contact">
                     <div class="footer__contact-item">
